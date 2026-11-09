@@ -3,7 +3,7 @@ CREATE TABLE ubicaciones (
   nombre varchar(50) NOT NULL,
   PRIMARY KEY (id_ubicacion),
   UNIQUE KEY nombre (nombre)
-) 
+);
 
 CREATE TABLE switches (
   id_switch int NOT NULL AUTO_INCREMENT,
@@ -16,7 +16,7 @@ CREATE TABLE switches (
   UNIQUE KEY ip (ip),
   CONSTRAINT FK_ubicaciones_switches FOREIGN KEY (id_ubicacion)
     REFERENCES ubicaciones (id_ubicacion)
-) 
+);
 
 CREATE TABLE responsables (
   id_responsable int NOT NULL AUTO_INCREMENT,
@@ -28,7 +28,7 @@ CREATE TABLE responsables (
   PRIMARY KEY (id_responsable),
   UNIQUE KEY documento (documento),
   UNIQUE KEY email (email)
-)
+);
 
 -- Resuelve la relación N:M entre responsables y switches.
 -- Cada fila es un usuario y contraseña de un responsable en un switch.
@@ -45,7 +45,7 @@ CREATE TABLE credenciales (
     REFERENCES switches (id_switch),
   CONSTRAINT FK_responsables_credenciales FOREIGN KEY (id_responsable)
     REFERENCES responsables (id_responsable)
-) 
+);
 
 INSERT INTO ubicaciones (nombre) VALUES
  ('ITSP Salon 1'),
